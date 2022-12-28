@@ -1,21 +1,20 @@
 const express = require("express");
 const router = express.Router();
-const  {apiController} = require("../controller/apiController")
+const {
+  getApi,
+  postApi,
+  putApi,
+  delApi,
+} = require("../controller/apiController");
 
 
-router.get("/", apiController);
+router.get("/", getApi);
 
-router.post("/", (req, res) => {
-  res.status(200).json({ message: "post api" });
-});
+router.post("/", postApi);
 
-router.put("/:id", (req, res) => {
-  res.status(200).json({ message: `put req on id ${req.params.id}` });
-});
+router.put("/:id", putApi);
 
-router.delete("/:id", (req, res) => {
-  res.status(200).json({ message: `delete req on id ${req.params.id}` });
-});
+router.delete("/:id", delApi);
 
 module.exports = router;
 
