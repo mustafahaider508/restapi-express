@@ -24,6 +24,7 @@ app.use(function (req, res, next) {
   next();
 });
 app.use("/api", require("./router/api"));
+app.use("/user", require("./router/user"));
 app.use(errorHandeler );
 
 app.listen(port, () => {

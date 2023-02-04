@@ -6,15 +6,15 @@ const {
   putApi,
   delApi,
 } = require("../controller/apiController");
+const { protect} = require("../errorMiddleware/authMiddleware")
 
+router.get("/",protect, getApi);
 
-router.get("/", getApi);
+router.post("/", protect,postApi);
 
-router.post("/", postApi);
+router.put("/:id", protect,putApi);
 
-router.put("/:id", putApi);
-
-router.delete("/:id", delApi);
+router.delete("/:id", protect,delApi);
 
 module.exports = router;
 
