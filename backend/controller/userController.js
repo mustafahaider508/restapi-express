@@ -60,12 +60,8 @@ const loginUser = asyncHander(async(req,res) => {
 })
 
 const getUser = asyncHander(async (req, res) => {
-    const {_id,name,email} = await User.findById(req.user.id)
-    res.json({
-      id:_id,
-      name,
-      email
-  });
+  
+    res.json(req.user);
 });
 
 

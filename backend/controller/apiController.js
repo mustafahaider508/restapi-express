@@ -27,12 +27,12 @@ const putApi = asyncHander(async (req,res) => {
       res.status(400);
       throw new Error("Goal not found");
     }
-    const user = await User.findById(req.user.id);
-    if(!user){
+  
+    if (!req.user) {
       res.status(401);
       throw new Error("user not found");
     }
-    if (gaol.user.toString() !== user.id) {
+    if (gaol.user.toString() !== req.user.id) {
       res.status(401);
       throw new Error("user not authorized");
     }
@@ -48,16 +48,16 @@ const delApi = asyncHander(async (req,res) => {
        res.status(400);
        throw new Error("Goal not found");
      }
-      const user = await User.findById(req.user.id);
-      if (!user) {
+
+      if (!req.user) {
         res.status(401);
         throw new Error("user not found");
       }
-      if (gaol.user.toString() !== user.id) {
+      if (gaol.user.toString() !== req.user.id) {
         res.status(401);
         throw new Error("user not authorized");
       }
-    const deletegoal = await Goal.remove();
-      res.status(200).json("goal deleted");
+     await Goal.remove();
+      
 })
  module.exports = { getApi, postApi, putApi, delApi };

@@ -10,7 +10,7 @@ const { protect} = require("../errorMiddleware/authMiddleware")
 
 router.get("/",protect, getApi);
 
-router.post("/", protect,postApi);
+router.post("/create-goals", protect,postApi);
 
 router.put("/:id", protect,putApi);
 
